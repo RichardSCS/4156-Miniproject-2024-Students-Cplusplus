@@ -18,7 +18,6 @@ class CourseUnitTests : public ::testing::Test {
 Course* CourseUnitTests::testCourse = nullptr;
 
 TEST_F(CourseUnitTests, ToStringTest) {
-  std::string expectedResult = R"(\nInstructor: Griffin Newbold; Location:
-                                  417 IAB; Time: 11:40-12:55)";
+  std::string expectedResult = "\nInstructor: Griffin Newbold; Location: 417 IAB; Time: 11:40-12:55";
   ASSERT_EQ(expectedResult, testCourse->display());
 }
