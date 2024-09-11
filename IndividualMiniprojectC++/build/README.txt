@@ -12,7 +12,7 @@ The code coverage library requires lcov and genhtml.
 Do these in the build directory:
 
 cmake -DENABLE_COVERAGE=true .. && make
-./CodeCoverage && make coverage
+./CodeCoverage;  make coverage
 
 The first command builds the targets and executables,
 the second one generates the report in build/coverage/index.html
