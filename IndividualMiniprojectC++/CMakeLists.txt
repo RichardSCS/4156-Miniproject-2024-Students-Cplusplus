@@ -118,6 +118,7 @@ add_executable(CodeCoverage
   test/sample.cpp
   test/CourseUnitTests.cpp
   test/DepartmentUnitTests.cpp
+  test/MyFileDatabaseUnitTests.cpp
   src/Course.cpp
   src/Department.cpp
   src/MyFileDatabase.cpp

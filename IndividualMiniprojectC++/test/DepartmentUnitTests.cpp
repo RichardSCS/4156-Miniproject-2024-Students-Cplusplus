@@ -73,7 +73,7 @@ TEST_F(DepartmentUnitTests, NumberOfMajors) {
   ASSERT_EQ(testDepartment->getNumberOfMajors(), 2699);
 }
 
-TEST_F(DepartmentUnitTests, DeparmentChair) {
+TEST_F(DepartmentUnitTests, DepartmentChair) {
   ASSERT_EQ(testDepartment->getDepartmentChair(), "Luca Carloni");
 }
 
