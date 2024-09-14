@@ -32,7 +32,10 @@ Course::Course() : enrollmentCapacity(0), enrolledStudentCount(0),
  * @return true if the student is successfully enrolled, false otherwise.
  */
 bool Course::enrollStudent() {
-  enrolledStudentCount++;
+  if (enrolledStudentCount < enrollmentCapacity) {
+    enrolledStudentCount++;
+    return true;
+  }
   return false;
 }
 
@@ -42,7 +45,10 @@ bool Course::enrollStudent() {
  * @return true if the student is successfully dropped, false otherwise.
  */
 bool Course::dropStudent() {
-  enrolledStudentCount--;
+  if (enrolledStudentCount > 0) {
+    enrolledStudentCount--;
+    return true;
+  }
   return false;
 }
 
@@ -51,11 +57,11 @@ std::string Course::getCourseLocation() const {
 }
 
 std::string Course::getInstructorName() const {
-  return courseTimeSlot;
+  return instructorName;
 }
 
 std::string Course::getCourseTimeSlot() const {
-  return instructorName;
+  return courseTimeSlot;
 }
 
 std::string Course::display() const {
@@ -64,26 +70,30 @@ std::string Course::display() const {
 }
 
 void Course::reassignInstructor(const std::string& newInstructorName) {
-  std::cout << "Old Instructor: " << instructorName << std::endl;
+  //std::cout << "Old Instructor: " << instructorName << std::endl;
   // Ensure the class member is being updated
-  this->instructorName = newInstructorName;
-  std::cout << "New Instructor: " << this->instructorName << std::endl;
+  if (!newInstructorName.empty())
+    this->instructorName = newInstructorName;
+  //std::cout << "New Instructor: " << this->instructorName << std::endl;
 }
 
 void Course::reassignLocation(const std::string& newLocation) {
-  courseLocation = newLocation;
+  if (!newLocation.empty())
+    courseLocation = newLocation;
 }
 
 void Course::reassignTime(const std::string& newTime) {
-  courseTimeSlot = newTime;
+  if (!newTime.empty())
+    courseTimeSlot = newTime;
 }
 
 void Course::setEnrolledStudentCount(int count) {
-  enrolledStudentCount = count;
+  if (0 <= count)
+    enrolledStudentCount = count;
 }
 
 bool Course::isCourseFull() const {
-  return enrollmentCapacity > enrolledStudentCount;
+  return enrollmentCapacity <= enrolledStudentCount;
 }
 
 void Course::serialize(std::ostream& out) const {
